@@ -1,32 +1,13 @@
 package utlis;
 
-<<<<<<< HEAD
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-=======
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
->>>>>>> a373050 (Oct30)
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-<<<<<<< HEAD
 import utils.ConfigReader;
 import utils.Constants;
-import utils.PageInitializer;
-
-import java.time.Duration;
-
-public class CommonMethods extends PageInitializer {
-    public static WebDriver driver; // the driver instance is common through out the project
-    public static void openBrowserAndLaunchApplication(){
-//        read the property file
-        ConfigReader.readProperties(Constants.CONFIGURATION_FILEPATH);
-//        we are reading the key browser from the property file
-        switch (ConfigReader.getPropertyValue("browser")){
-=======
 
 import java.io.File;
 import java.io.IOException;
@@ -39,10 +20,9 @@ public class CommonMethods extends utlis.PageInitializers {
     public static void openBrowserAndLaunchApplication(){
 //        read the property file
 
-        utlis.ConfigReader.readProperties(utlis.Constants.CONFIGURATION_FILEPATH);
+        ConfigReader.readProperties(Constants.CONFIGURATION_FILEPATH);
 //        we are reading the key browser from the property file
-        switch (utlis.ConfigReader.getPropertyValue("browser")){
->>>>>>> a373050 (Oct30)
+        switch (ConfigReader.getPropertyValue("browser")){
             case "chrome":
                 driver = new ChromeDriver();
                 break;
@@ -53,13 +33,8 @@ public class CommonMethods extends utlis.PageInitializers {
                 throw new RuntimeException("invalid browser name");
         }
         driver.manage().window().maximize();
-<<<<<<< HEAD
         driver.get(ConfigReader.getPropertyValue("url"));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Constants.IMPLICIT_WAIT));
-=======
-        driver.get(utlis.ConfigReader.getPropertyValue("url"));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(utlis.Constants.IMPLICIT_WAIT));
->>>>>>> a373050 (Oct30)
         initializePageObjects();
     }
 
@@ -71,11 +46,7 @@ public class CommonMethods extends utlis.PageInitializers {
 
     public static WebDriverWait getWait(){
         WebDriverWait wait = new WebDriverWait(driver,
-<<<<<<< HEAD
                 Duration.ofSeconds(Constants.EXPLICIT_WAIT));
-=======
-                Duration.ofSeconds(utlis.Constants.EXPLICIT_WAIT));
->>>>>>> a373050 (Oct30)
         return wait;
     }
 
@@ -96,10 +67,6 @@ public class CommonMethods extends utlis.PageInitializers {
     public static void jsClick(WebElement element){
         getJSExecutor().executeScript("arguments[0].click();", element);
     }
-<<<<<<< HEAD
-
-
-=======
     public void closeBrowser(){
         driver.quit();
     }
@@ -117,7 +84,7 @@ public class CommonMethods extends utlis.PageInitializers {
         try {
             FileUtils.copyFile
                     (sourceFile, new File
-                            (utlis.Constants.SCREENSHOT_FILEPATH +
+                            (Constants.SCREENSHOT_FILEPATH +
                                     fileName+" "+
                                     getTimeStamp("yyyy-MM-dd-HH-mm-ss")
                                     +".png"));
@@ -135,5 +102,4 @@ public class CommonMethods extends utlis.PageInitializers {
         //it will return the formatted date as per the pattern in string format
         return sdf.format(date);
     }
->>>>>>> a373050 (Oct30)
 }

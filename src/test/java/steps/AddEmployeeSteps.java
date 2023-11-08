@@ -5,7 +5,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import utlis.CommonMethods;
-import utlis.Constants;
+import utils.Constants;
 import utlis.ExcelReader;
 
 import java.util.Iterator;
